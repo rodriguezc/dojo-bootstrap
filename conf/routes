@@ -1,0 +1,9 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#GET           /                                                                                           controllers.Assets.at(path="/public", file="index.html")
+#GET           /*file                                                                                      controllers.Assets.at(path="/public", file)
+
+GET        /             controllers.Assets.at(path="/websrc", file="index-dev.html")
+GET        /*file        controllers.Assets.at(path="/websrc", file)
