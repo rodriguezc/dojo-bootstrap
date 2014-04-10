@@ -36,7 +36,12 @@ var profile = (function () {
         layers: {
             "layouts/all": {
                 include: [
+                    "myapp/widget/IndexWidget",
                     "myapp/main",
+                    "myapp/widget/Page1Widget",
+                    "myapp/widget/Page2Widget",
+                    "myapp/widget/DetailsWidget",
+                    "myapp/layout/HashAwareTabContainer",
                     "dojo/dojo",
                     "dojo/selector/acme",
                     "dijit/form/nls/fr/validate",
