@@ -52,13 +52,25 @@ define([
             this.borderContainer.resize();
         },
 
-        generateTabWidgetContent: function (page) {
-            if (page == "Menu 1") {
-                var page1Widget = new Page1Widget();
-                return page1Widget;
+        generateTabContent: function (hashObj) {
+            if (hashObj.page != null) {
+                if (hashObj.page == "Menu 1") {
+                    var page1Widget = new Page1Widget();
+                    var tabContent = {
+                        "title": "Menu 1",
+                        "widget": page1Widget
+                    }
+                    return tabContent;
+                } else if (hashObj.page == "Menu 2") {
+                    var page1Widget = new Page1Widget();
+                    var tabContent = {
+                        "title": "Menu 2",
+                        "widget": page1Widget
+                    }
+                    return tabContent;
+                }
             }
-            var page2Widget = new Page1Widget();
-            return page2Widget
+            return null;
         }
 
 

@@ -20,7 +20,7 @@ define([
         templateString: template,
         postCreate: function () {
             this.inherited(arguments);
-            this.baseHash= hash();
+            this.baseHash = hash();
 
         },
         resize: function () {
@@ -37,15 +37,20 @@ define([
             }
         },
 
-        destroy: function() {
+        destroy: function () {
             this.inherited(arguments);
         },
 
-        generateTabWidgetContent: function (page) {
-            var detailsWidget = new DetailsWidget();
-            return detailsWidget
-        }
 
-    });
+        generateTabContent: function (hashObj) {
+            if (hashObj.page != null && hashObj.queue != null) {
+                var detailsWidget = new DetailsWidget();
+                var tabContent = {
+                    "title": "Menu 2",
+                    "widget": detailsWidget
+                }
+                return tabContent;
+            }
 
+        }})
 });

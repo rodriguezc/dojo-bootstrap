@@ -1,16 +1,15 @@
 require([
     "dojo/parser",
     "myapp/widget/IndexWidget",
-    "dojo/topic",
     "dojo/hash",
-    "dojo/io-query",
+    "myapp/utils/hashUtils",
     "dojo/domReady!"
-], function (parser, IndexWidget, topic, hash,ioQuery) {
+], function (parser, IndexWidget, hash,hashUtils) {
     parser.parse();
     var startingHash = hash();
 
     if(startingHash) {
-        hash(""); //very important: before creating IndexWidget else IndexWidget is not initialized with the good hash
+        hash("", true); //very important: before creating IndexWidget else IndexWidget is not initialized with the good hash
     }
 
     var indexWidget = new IndexWidget();
@@ -18,16 +17,6 @@ require([
 
     //if there is an hash -> invoke hashchange to open page
     if(startingHash) {
-        for (var i = 0; i <  startingHash.length; i++) {
-            var currentChar = startingHash[i];
-            if(currentChar == "&") {
-                hash(startingHash.substring(0, i));
-                topic.publish("/dojo/hashchange", startingHash.substring(0, i));
-            }
-            else if(startingHash.length-1 == i) {
-                hash(startingHash);
-                topic.publish(startingHash);
-            }
-        }
+        hashUtils.changeHashParamByParam(startingHash);
     }
 });
